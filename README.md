@@ -14,49 +14,49 @@ It was written for fun.Hope someone finds it usefull.
 
 # Simple Import Dialog
 
-    :::python
-        from huilib import *
-        
-        class SimpleImportDialog(HDialog):
-            def __init__(self, name, title):
-                super(SimpleImportDialog, self).__init__(name, title)
-                self.setWindowLayout('vertical')
-        
-                # Column Layout
-                col = HColumnLayout()
-                self.filefield = HFileField('geo_field', 'Geo:', type_filter = 'geo')
-        
-                # Buttons in row Layout
-                self.importButton = HButton('import', 'Import')
-                self.closeButton = HButton('close', 'Close')
-                row = HRowLayout()
-                row.addGadget(self.importButton)
-                row.addGadget(self.closeButton)
-        
-                # Add file field and buttons raw layout
-                col.addGadget(self.filefield)
-                col.addLayout(row)
-        
-                # Connect button signals
-                self.closeButton.connect(self.close)
-                self.importButton.connect(self.cb_import)
-                self.addLayout(col)
-        
-                # This method should ALWAYS be called last!
-                self.initUI()
-        
-        
-            def cb_import(self):
-                val = self.filefield.getValue()
-                if not val:
-                    return
-                geo = hou.node('/obj').createNode('geo')
-                geo.node('file1').parm('file').set(val)
-        
-        
-        if __name__ == '__main__':
-            ui = SimpleImportDialog(name = 'import_dlg', title = 'Import Dialog')
-            ui.show()
+```python
+
+from huilib import *
+
+class SimpleImportDialog(HDialog):
+    def __init__(self, name, title):
+        super(SimpleImportDialog, self).__init__(name, title)
+        self.setWindowLayout('vertical')
+
+        # Column Layout
+        col = HColumnLayout()
+        self.filefield = HFileField('geo_field', 'Geo:', type_filter = 'geo')
+
+        # Buttons in row Layout
+        self.importButton = HButton('import', 'Import')
+        self.closeButton = HButton('close', 'Close')
+        row = HRowLayout()
+        row.addGadget(self.importButton)
+        row.addGadget(self.closeButton)
+
+        # Add file field and buttons raw layout
+        col.addGadget(self.filefield)
+        col.addLayout(row)
+
+        # Connect button signals
+        self.closeButton.connect(self.close)
+        self.importButton.connect(self.cb_import)
+        self.addLayout(col)
+
+        # This method should ALWAYS be called last!
+        self.initUI()
 
 
-_hou.alexx@gmail.com_
+    def cb_import(self):
+        val = self.filefield.getValue()
+        if not val:
+            return
+        geo = hou.node('/obj').createNode('geo')
+        geo.node('file1').parm('file').set(val)
+
+
+if __name__ == '__main__':
+    ui = SimpleImportDialog(name = 'import_dlg', title = 'Import Dialog')
+    ui.show()
+    
+```
