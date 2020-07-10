@@ -3,10 +3,10 @@ huilib (Houdini UI Library)
 
 Python library for building native houdini user interfaces.
 
-This library is simple python wrapper around houdini .ui scripting language. Although it doesn't cover even a half of all available houdini UI controlls, it does provide most usefull of them, such as buttons, textFields, checkboxes, menus, etc.
+This library is a simple Python wrapper around Houdini .ui scripting language. Although it doesn't cover even a half of all available houdini UI controlls, it does provide most usefull of them, such as buttons, textFields, checkboxes, menus, etc.
 The coding style is very similar to PyQt.
 
-This project is experimental.Not sure if i will continue to support it, but it was fun to write it. Hope someone find it usefull =)
+It was written for fun.Hope someone finds it usefull.
 
 *See examples/all_gadgets.py*
 
