@@ -1,8 +1,8 @@
 import hou
 from random import random
 import huilib
-reload(huilib)
-
+import importlib
+importlib.reload(huilib)
 
 class TestDialog(huilib.HDialog):
     def __init__(self, name, title):
@@ -139,7 +139,7 @@ class TestDialog(huilib.HDialog):
 
     def cb_getColor(self):
         clr = self.colorSelector.getValue()
-        print clr
+        print(clr)
 
 
 if __name__ == '__main__':
